@@ -2,16 +2,24 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/ileossa/go-bank-backend/controllers"
+	"github.com/ileossa/go-bank-backend/models"
 )
 
-func main(){
+func main() {
 
 	router := gin.Default()
-	router.GET("/ping", func(c *gin.Context) {
+	models.ConnectDB()
+	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"message": "Hello world",
 		})
 	})
-	router.Run("localhost:8080")
-}
+	router.GET("/books", controllers.FindBooks)
+	router.GET("/books/:id", controllers.FindBookById)
+	router.POST("/books", controllers.CreateBook)
+	router.PATCH("/books/:id", controllers.UpdateBookById)
+	router.DELETE("/books/:id", controllers.DeleteBookById)
 
+	router.Run()
+}

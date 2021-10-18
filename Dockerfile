@@ -9,5 +9,3 @@ FROM scratch
 COPY --from=builder /Users/vincentlafosse/ileossa/bank/bank .
 EXPOSE 8080
 ENTRYPOINT ["./bank"]
-
-

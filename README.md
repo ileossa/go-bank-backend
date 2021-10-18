@@ -44,3 +44,11 @@ This Compose file contains the following environment variables:
 * **Port** `5432`
 * **Username** as `POSTGRES_USER`, by default: `postgres`
 * **Password** as `POSTGRES_PASSWORD`, by default `changeme`
+
+
+## Troubleshooting
+
+# if port 8080 already used
+
+`lsof -i :8080 | grep LISTEN`
+`kill -9 <pid>`
