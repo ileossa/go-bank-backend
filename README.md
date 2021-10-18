@@ -1,6 +1,10 @@
 # Technical test -  bank backend - DejaMobile
 
-#
+# Docker
+
+## Build
+
+`docker build -t bank:latest .`
 
 
 ## Postgresql & PgAdmin powered by compose
