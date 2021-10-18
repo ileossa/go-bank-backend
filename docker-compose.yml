@@ -2,6 +2,20 @@
 version: '3.5'
 
 services:
+  backend-bank:
+    container_name: backend_container
+    image: bank:latest
+    ports:
+      - "8081:8080"
+    environment:
+      - POSTGRESQL_IP = "postgres"
+    networks:
+      - bank_network
+    restart: always
+    depends_on:
+      - postgres
+
+
   postgres:
     container_name: postgres_container
     image: postgres
@@ -14,7 +28,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - bank_network
     restart: unless-stopped
 
   pgadmin:
@@ -30,12 +44,12 @@ services:
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
-      - postgres
+      - bank_network
     restart: unless-stopped
 
 
 networks:
-  postgres:
+  bank_network:
     driver: bridge
 
 volumes:

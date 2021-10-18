@@ -1,10 +1,16 @@
-# Technical test -  bank backend - DejaMobile
+# Technical test -  bank backend
+
+# Quick Start
+
+`make dev` , use docker-compose and
+
+
 
 # Docker
 
 ## Build
 
-`docker build -t bank:latest .`
+`make package`
 
 
 ## Postgresql & PgAdmin powered by compose
@@ -44,3 +50,21 @@ This Compose file contains the following environment variables:
 * **Port** `5432`
 * **Username** as `POSTGRES_USER`, by default: `postgres`
 * **Password** as `POSTGRES_PASSWORD`, by default `changeme`
+
+
+
+## Troubleshooting
+
+# if port 8080 already used
+
+`lsof -i :8080 | grep LISTEN`
+`kill -9 <pid>`
+
+# Generate swagger documentation
+
+You must install : [https://github.com/swaggo/gin-swagger](https://github.com/swaggo/gin-swagger)
+
+execute : `swag init && go build main.go`
+
+Offical base documentation for swagger+Go: [https://github.com/swaggo/swag/blob/master/README.md](https://github.com/swaggo/gin-swagger)
+
