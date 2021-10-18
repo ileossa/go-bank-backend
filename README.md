@@ -46,9 +46,19 @@ This Compose file contains the following environment variables:
 * **Password** as `POSTGRES_PASSWORD`, by default `changeme`
 
 
+
 ## Troubleshooting
 
 # if port 8080 already used
 
 `lsof -i :8080 | grep LISTEN`
 `kill -9 <pid>`
+
+# Generate swagger documentation
+
+You must install : `https://github.com/swaggo/gin-swagger`
+
+execute : `swag init && go build main.go`
+
+Offical base documentation for swagger+Go: `https://github.com/swaggo/swag/blob/master/README.md`
+

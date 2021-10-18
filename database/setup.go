@@ -1,6 +1,7 @@
-package models
+package database
 
 import (
+	"github.com/ileossa/go-bank-backend/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -15,6 +16,6 @@ func ConnectDB() {
 	if err != nil {
 		panic("Failed to connect to database" + err.Error())
 	}
-	db.AutoMigrate(&Book{})
+	db.AutoMigrate(&models.Book{})
 	DB = db
 }

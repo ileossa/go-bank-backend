@@ -1,0 +1,141 @@
+definitions:
+  models.Book:
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+    type: object
+  models.CreateBookInput:
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+    required:
+    - author
+    - title
+    type: object
+  models.UpdateBookInput:
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+    type: object
+info:
+  contact:
+    email: none@email.com
+    name: API Support
+    url: http://www.github.com/ileossa
+  description: This is a sample server for finetech bank.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger bank-backend API
+  version: "0.1"
+paths:
+  /books:
+    get:
+      consumes:
+      - application/json
+      description: get list of all books
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: List of books
+    post:
+      consumes:
+      - application/json
+      description: Insert a new book
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: return book created
+          schema:
+            $ref: '#/definitions/models.CreateBookInput'
+        "400":
+          description: The error built-in interface type is the conventional interface
+            for representing an error condition.
+          schema:
+            type: string
+      summary: New books
+  /books/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Find a specfic book with your identifiant and delete it
+      operationId: get-string-by-int
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: return the result (boolean)
+          schema:
+            type: boolean
+        "400":
+          description: The error built-in interface type is the conventional interface
+            for representing an error condition.
+          schema:
+            type: string
+      summary: Delete a specific book
+    get:
+      consumes:
+      - application/json
+      description: Find a specfic book with your identifiant
+      operationId: get-string-by-int
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: return book
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: Record not found
+          schema:
+            type: string
+      summary: Find a specific book
+    patch:
+      consumes:
+      - application/json
+      description: Find a specfic book with your identifiant and update it
+      operationId: get-string-by-int
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: return book updated
+          schema:
+            $ref: '#/definitions/models.UpdateBookInput'
+        "400":
+          description: The error built-in interface type is the conventional interface
+            for representing an error condition.
+          schema:
+            type: string
+      summary: Update a specific book
+swagger: "2.0"
