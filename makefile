@@ -1,14 +1,20 @@
 dev:
-	docker-compose up -d && go run http/main.go
+	go run http/main.go
+
+provisionnig:
+	docker-compose up -d
+
+destroy:
+	docker-compose down
 
 test:
 	go test
 
 package:
-	cd http && docker build -t bank:latest .
+	docker build -t bank:latest .
 
 publish:
-	docker push
+	docker push bank:latest
 
 doc:
 	swag i

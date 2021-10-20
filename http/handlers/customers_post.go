@@ -9,7 +9,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ileossa/go-bank-backend/service"
+	"github.com/ileossa/go-bank-backend/http/service"
 	"net/http"
 	"time"
 )
