@@ -1,5 +1,5 @@
 dev:
-	go run http/main.go
+	go run main.go
 
 provisionnig:
 	docker-compose up -d
