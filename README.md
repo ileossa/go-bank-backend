@@ -1,28 +1,38 @@
 [![GuardRails badge](https://api.guardrails.io/v2/badges/ileossa/go-bank-backend.svg?token=47c732401be09e2f2af23f20cf9bf691a7555b8eb37fa16adf349bfd1e10818e&provider=github)](https://dashboard.guardrails.io/gh/ileossa/95105)
 
-# Technical test -  bank backend
+# Technical test - bank backend
+
+## Requirements:
+
+* docker >= 17.12.0+
+* docker-compose
+* golang >= 1.17
+* make
 
 # Quick Start
 
-`make dev` , use docker-compose and
-
-
+use `make dev` to run app locally
 
 # Docker
 
-## Build
+## Build image
 
 `make package`
 
+## Publish image
+
+`make publish-images`
+
+# Documentation
+
+Use `make doc` to generate the documentation.
+
+ð You can publish documentation with `make doc-publish` on the branch /publish/documentation ð
 
 ## Postgresql & PgAdmin powered by compose
 
-
-### Requirements:
-* docker >= 17.12.0+
-* docker-compose
-
 ### Quick Start
+
 * Clone or download this repository
 * Go inside of directory,  `cd compose-postgres`
 * Run this command `docker-compose up -d`
@@ -61,12 +71,3 @@ This Compose file contains the following environment variables:
 
 `lsof -i :8080 | grep LISTEN`
 `kill -9 <pid>`
-
-# Generate swagger documentation
-
-You must install : [https://github.com/swaggo/gin-swagger](https://github.com/swaggo/gin-swagger)
-
-execute : `swag init && go build main.go`
-
-Offical base documentation for swagger+Go: [https://github.com/swaggo/swag/blob/master/README.md](https://github.com/swaggo/gin-swagger)
-
