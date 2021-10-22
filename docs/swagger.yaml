@@ -1,0 +1,73 @@
+definitions:
+  service.CardSchema:
+    properties:
+      history:
+        items:
+          $ref: '#/definitions/service.HistorySchema'
+        type: array
+      number:
+        type: integer
+    type: object
+  service.HistorySchema:
+    properties:
+      amount:
+        type: integer
+      category:
+        type: string
+      date:
+        type: string
+    type: object
+  service.UserSchema:
+    properties:
+      active:
+        type: boolean
+      address:
+        type: string
+      birthday:
+        type: string
+      card:
+        items:
+          $ref: '#/definitions/service.CardSchema'
+        type: array
+      email:
+        type: string
+      firstname:
+        type: string
+      money_on_account:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact:
+    email: none@email.com
+    name: API Support
+    url: http://www.github.com/ileossa
+  description: This is a sample server for finetech bank.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger bank-backend API
+  version: "0.1"
+paths:
+  /customers:
+    get:
+      consumes:
+        - application/json
+      description: Get user's informations
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: return arry of users if email is empty or no passed
+          schema:
+            items:
+              $ref: '#/definitions/service.UserSchema'
+            type: array
+        "400":
+          description: Email not found
+          schema:
+            type: string
+      summary: Get User
+swagger: "2.0"

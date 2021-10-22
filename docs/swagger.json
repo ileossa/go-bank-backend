@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server for finetech bank.",
+    "title": "Swagger bank-backend API",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "http://www.github.com/ileossa",
+      "email": "none@email.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "0.1"
+  },
+  "paths": {
+    "/customers": {
+      "get": {
+        "description": "Get user's informations",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "Get User",
+        "responses": {
+          "200": {
+            "description": "return arry of users if email is empty or no passed",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/service.UserSchema"
+              }
+            }
+          },
+          "400": {
+            "description": "Email not found",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "service.CardSchema": {
+      "type": "object",
+      "properties": {
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/service.HistorySchema"
+          }
+        },
+        "number": {
+          "type": "integer"
+        }
+      }
+    },
+    "service.HistorySchema": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer"
+        },
+        "category": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "service.UserSchema": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "address": {
+          "type": "string"
+        },
+        "birthday": {
+          "type": "string"
+        },
+        "card": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/service.CardSchema"
+          }
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "money_on_account": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
