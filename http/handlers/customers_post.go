@@ -1,10 +1,3 @@
-// @Summary New User
-// @Description Insert a new user
-// @Accept json
-// @Produce json
-// @Success 200 {object} []UserSchema "return arry of users"
-// @Failure 400 {object} string "Error when binding JSON"
-// @Router /customers [post]
 package handlers
 
 import (
@@ -24,6 +17,13 @@ type customerPostRequest struct {
 	Money     int64     `json:"money"`
 }
 
+// @Summary New User
+// @Description Insert a new user
+// @Accept json
+// @Produce json
+// @Success 200 {object} []service.UserSchema "return arry of users"
+// @Failure 400 {object} string "Error when binding JSON"
+// @Router /customers [post]
 func NewUser(s service.Customer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Validate input

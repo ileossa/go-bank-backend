@@ -35,6 +35,19 @@ type OrderPostRequest struct {
 	Status     string `json:"status"`
 }
 
+// @Summary Payment issue
+// @Description Send a payment order
+// @Accept json
+// @Produce json
+// @Success 200 {object} string "message": "SUCCESS"
+// @Failure 400 {object} string "Email not found"
+// @Failure 400 {object} string "Error binding Json"
+// @Failure 400 {object} string "Error user not found"
+// @Failure 400 {object} string "User's account unactive"
+// @Failure 400 {object} string "User haven't have this card"
+// @Failure 400 {object} string "User have'nt enough money"
+// @Failure 400 {object} string "Can't retrieve payment history, for this card"
+// @Router /order/emission [post]
 func Order(s service.Customer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Validate and Bind Json
@@ -61,7 +74,7 @@ func Order(s service.Customer) gin.HandlerFunc {
 		}
 		// check if user have the amount on our account and minus
 		if r, _ := user.Minus(req.Amount); false == r {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "User doesn't enought money"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "User doesn't enough money"})
 			return
 		}
 		// insert transaction into user's history

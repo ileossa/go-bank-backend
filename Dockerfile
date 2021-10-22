@@ -1,24 +1,24 @@
-FROM golang:1.16.6 as builder
-WORKDIR /Users/vincentlafosse/go/src/github.com/ileossa/go-bank-backend
+FROM golang:1.16.6 AS builder
 
-RUN #go clean -modcache
+#RUN apk add --no-cache git
 
+WORKDIR /tmp/go-sample-app
+
+# We want to populate the module cache based on the go.{mod,sum} files.
 COPY go.mod .
-COPY main.go .
+COPY go.sum .
 
-ADD http/handlers handlers
-ADD http/service service
-ADD http/utils utils
+RUN go mod download
 
-RUN go mod download github.com/gin-gonic/gin
-RUN go mod download github.com/yuin/goldmark
-RUN go mod download github.com/ileossa/go-bank-backend/
-#RUN go get github.com/ileossa/go-bank-backend/http/handlers
-#RUN go get github.com/ileossa/go-bank-backend/http/service
+COPY . .
 
+# Unit tests
+#RUN CGO_ENABLED=0 go test -v
+
+# Build the Go app
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o bank .
 
 FROM scratch
-COPY --from=builder /Users/vincentlafosse/ileossa/bank/bank .
+COPY --from=builder /tmp/go-sample-app .
 EXPOSE 8080
 ENTRYPOINT ["./bank"]

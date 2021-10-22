@@ -2,7 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	_ "github.com/ileossa/go-bank-backend/http/docs"
+	_ "github.com/ileossa/go-bank-backend/docs"
+	"github.com/ileossa/go-bank-backend/http/utils"
 	"github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
 
@@ -23,7 +24,7 @@ import (
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 func main() {
 	c := service.InitCustomer()
-	//utils.ConnectDB(c)
+	utils.ConnectDB(c)
 
 	r := gin.Default()
 

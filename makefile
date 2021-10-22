@@ -13,8 +13,12 @@ test:
 package:
 	docker build -t bank:latest .
 
-publish:
+publish-images:
 	docker push bank:latest
 
 doc:
 	swag i
+
+publish-doc:
+	echo "Not implemented"
+

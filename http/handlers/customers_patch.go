@@ -1,11 +1,3 @@
-// @Summary Activate Account
-// @Description Activate account for a specific user
-// @Accept json
-// @Produce json
-// @Success 200 {object} bool "Return status after update"
-// @Failure 400 {object} string "Error when binding JSON"
-// @Failure 400 {object} string "User not found by email"
-// @Router /customers [get]
 package handlers
 
 import (
@@ -18,6 +10,14 @@ type ActivatePatchRequest struct {
 	Active bool `json:"active"`
 }
 
+// @Summary Activate Account
+// @Description Activate account for a specific user
+// @Accept json
+// @Produce json
+// @Success 200 {object} bool "Return status after update"
+// @Failure 400 {object} string "Error when binding JSON"
+// @Failure 400 {object} string "User not found by email"
+// @Router /customers [patch]
 func Activate(s service.Customer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		email := c.Query("email")

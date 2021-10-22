@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/ileossa/go-bank-backend/service"
+	"github.com/ileossa/go-bank-backend/http/service"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
