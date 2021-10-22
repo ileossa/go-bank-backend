@@ -1,3 +1,5 @@
+[![GuardRails badge](https://api.guardrails.io/v2/badges/ileossa/go-bank-backend.svg?token=47c732401be09e2f2af23f20cf9bf691a7555b8eb37fa16adf349bfd1e10818e&provider=github)](https://dashboard.guardrails.io/gh/ileossa/95105)
+
 # Technical test -  bank backend
 
 # Quick Start
