@@ -1,19 +1,19 @@
-// @Summary Get User
-// @Description Get user's informations
-// @Accept json
-// @Produce json
-// @Success 200 {object} UserSchema "return informations of specific email's user passed on the requet"
-// @Success 200 {object} []UserSchema "return arry of users if email is empty or no passed"
-// @Failure 400 {object} string "Email not found"
-// @Router /customers [get]
 package handlers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ileossa/go-bank-backend/service"
+	"github.com/ileossa/go-bank-backend/http/service"
 	"net/http"
 )
 
+// @Summary Get User
+// @Description Get user's informations
+// @Accept json
+// @Produce json
+// @Success 200 {object} service.UserSchema "return informations of specific email's user passed on the requet"
+// @Success 200 {object} []service.UserSchema "return arry of users if email is empty or no passed"
+// @Failure 400 {object} string "Email not found"
+// @Router /customers [get]
 func GetCustomers(methods service.Customer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		email := c.Query("email")
