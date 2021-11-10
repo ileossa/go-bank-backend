@@ -1,7 +1,10 @@
 dev:
-	go run main.go
+	go run .
 
-provisionnig:
+provisioning:
+	rm -f go.mod go.sum
+	go mod init github.com/ileossa/go-bank-backend
+	go mod tidy
 	docker-compose up -d
 
 destroy:
@@ -17,7 +20,8 @@ publish-images:
 	docker push bank:latest
 
 doc:
-	swag i
+	echo "Not implemented"
+	#swag i
 
 publish-doc:
 	echo "Not implemented"
