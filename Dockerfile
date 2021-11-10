@@ -4,6 +4,9 @@ FROM golang:1.16.6 AS builder
 
 WORKDIR /tmp/go-sample-app
 
+# clean dependancies and add module requirements to go.sum and go.mod
+RUN go mod tidy
+
 # We want to populate the module cache based on the go.{mod,sum} files.
 COPY go.mod .
 COPY go.sum .
